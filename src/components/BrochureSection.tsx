@@ -8,6 +8,40 @@ const BrochureSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/sandipotsav-brochure.pdf';
+    link.download = 'SANDIPOTSAV Sponsorship Proposal 2K26.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleViewOnline = () => {
+    window.open('/sandipotsav-brochure.pdf', '_blank');
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'Sandipotsav 2026 Brochure',
+      text: 'Check out the Sandipotsav 2026 event brochure!',
+      url: window.location.origin + '/sandipotsav-brochure.pdf',
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy link to clipboard
+        await navigator.clipboard.writeText(shareData.url);
+        alert('Link copied to clipboard!');
+      }
+    } catch (err) {
+      // User cancelled or error occurred
+      console.log('Error sharing:', err);
+    }
+  };
+
   return (
     <section id="brochure" className="py-20 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative Sunbursts */}
@@ -51,7 +85,7 @@ const BrochureSection = () => {
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-lg">
               Download our comprehensive event brochure to explore all competitions, 
-              schedules, venue maps, and exciting activities planned for Sandip Utsav 2026.
+              schedules, venue maps, and exciting activities planned for Sandipotsav 2026.
             </p>
 
             {/* Highlights */}
@@ -79,6 +113,7 @@ const BrochureSection = () => {
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4">
               <motion.button
+                onClick={handleDownload}
                 className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold festival-shadow hover:opacity-90 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -87,6 +122,7 @@ const BrochureSection = () => {
                 Download PDF
               </motion.button>
               <motion.button
+                onClick={handleViewOnline}
                 className="flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-full font-semibold hover:bg-secondary/90 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -95,6 +131,7 @@ const BrochureSection = () => {
                 View Online
               </motion.button>
               <motion.button
+                onClick={handleShare}
                 className="flex items-center gap-2 px-6 py-3 border-2 border-border text-foreground rounded-full font-semibold hover:bg-card transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -122,7 +159,7 @@ const BrochureSection = () => {
               >
                 <img
                   src={competitionPoster}
-                  alt="Sandip Utsav Brochure"
+                  alt="Sandipotsav Brochure"
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />

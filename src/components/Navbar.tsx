@@ -71,8 +71,11 @@ const Navbar = () => {
               className="h-12 md:h-14 w-auto object-contain"
             />
             <div className="hidden sm:block h-10 w-px bg-border/60" />
-            <span className="hidden sm:block font-display text-xl md:text-2xl lg:text-3xl tracking-wide">
-              <span className="festival-text-gradient font-bold">Sandipotsav</span>
+            <span 
+              className="hidden sm:block font-display text-xl md:text-2xl lg:text-3xl tracking-wide text-white font-bold"
+              style={{ fontFamily: 'Gavency, Bebas Neue, sans-serif' }}
+            >
+              Sandipotsav
             </span>
           </motion.a>
 

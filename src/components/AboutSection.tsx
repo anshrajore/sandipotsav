@@ -58,10 +58,10 @@ const AboutSection = () => {
             />
           </div>
           <h2 className="font-display text-5xl md:text-7xl text-foreground mb-4">
-            About <span className="text-primary">Sandip Utsav</span>
+            About <span className="text-primary">SANDIPOTSAV</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Sandip Utsav is the largest cultural extravaganza of Sandip University, 
+            Sandipotsav is the largest cultural extravaganza of Sandip University, 
             bringing together art, music, dance, and technology in a spectacular 
             four-day celebration of youth and creativity.
           </p>
@@ -75,10 +75,10 @@ const AboutSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {[
-            { value: "10K+", label: "Participants" },
+            { value: "25K+", label: "Participants" },
             { value: "50+", label: "Events" },
             { value: "4", label: "Days" },
-            { value: "₹5L+", label: "Prize Pool" },
+            { value: "Unlimited", label: "Fun" },
           ].map((stat, index) => (
             <div
               key={index}

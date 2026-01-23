@@ -32,7 +32,7 @@ const HeroSection = () => {
       >
         <img
           src={isMobile ? heroMobile : heroDesktop}
-          alt="Sandip Utsav Festival"
+          alt="Sandipotsav Festival"
           className="w-full h-full object-cover"
         />
         {/* Gradient Overlay */}
@@ -46,13 +46,13 @@ const HeroSection = () => {
       >
         {/* Text Logo with CalfineDemo Font */}
         <motion.h1
-          className="text-6xl md:text-8xl lg:text-[10rem] font-bold mb-6 text-center leading-none"
-          style={{ fontFamily: 'CalfineDemo, Bebas Neue, sans-serif' }}
+          className="text-4xl md:text-10xl lg:text-[6rem] font-bold mb-6 text-center leading-none text-white drop-shadow-2xl"
+          style={{ fontFamily: 'Gavency, Bebas Neue, sans-serif' }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="festival-text-gradient drop-shadow-2xl text-shadow-festival">
+          <span className="text-shadow-festival">
             SANDIPOTSAV
           </span>
         </motion.h1>

@@ -2,12 +2,13 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Camera, Video, Gamepad2, Palette, Music, Mic, Trophy, PartyPopper, Star, Sparkles, Calendar, MapPin, Clock } from "lucide-react";
 import eventClubLogo from "@/assets/event-club-logo.jpg";
+import studentCouncilImage from "@/assets/studentcouncilimage.png";
 
 const dayOverview = [
   {
     day: "Monday",
     date: "02-02-2026",
-    theme: "Saree Day & Tie Day",
+    theme: "Saree Day & Formal Day",
     events: ["Photography Competition", "Reel Making Competition", "One Minute Game"],
     icon: Camera,
     color: "bg-primary",
@@ -290,6 +291,25 @@ const TimelineSection = () => {
             ))}
           </motion.div>
         )}
+
+        {/* Student Council Highlight */}
+        <motion.div
+          className="mt-16 md:mt-20 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h3 className="font-display text-4xl md:text-5xl text-foreground mb-6">
+            Sandipotsav Student Council 2024
+          </h3>
+          <div className="relative overflow-hidden rounded-3xl border border-border card-shadow">
+            <img
+              src={studentCouncilImage}
+              alt="Sandipotsav Student Council 2024 group photo"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

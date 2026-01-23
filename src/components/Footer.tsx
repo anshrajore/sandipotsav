@@ -23,7 +23,7 @@ const Footer = () => {
               />
             </div>
             <h3 className="font-display text-3xl text-foreground mb-4">
-              <span className="text-primary">Sandip</span> Utsav
+              <span className="text-primary">Sandip</span>Otsav
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md">
               The biggest cultural extravaganza celebrating art, music, dance, and creativity. 
@@ -68,7 +68,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Mail size={18} className="text-primary" />
-                <span>eventclub@sandipuniversity.edu.in</span>
+                <span>event.club@sandipuniversity.edu.in</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone size={18} className="text-primary" />
@@ -85,7 +85,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2026 Sandip Utsav | Event Club - By The Students, For The Students
+            © 2026 Sandipotsav |Developed by Event Club - By The Students, For The Students
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
