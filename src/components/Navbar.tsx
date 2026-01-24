@@ -32,14 +32,78 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   const currentLogo = mounted && resolvedTheme === "dark" ? sandipUniversityLogoLight : sandipUniversityLogoDark;
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    // Close mobile menu first and restore body overflow
+    const wasMenuOpen = isMobileMenuOpen;
     setIsMobileMenuOpen(false);
+    document.body.style.overflow = "unset";
+    
+    // Function to perform the scroll
+    const performScroll = () => {
+      const element = document.querySelector(href);
+      if (element) {
+        // Calculate offset for fixed navbar
+        const navbarHeight = 96;
+        const rect = element.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const elementTop = rect.top + scrollTop;
+        const offsetPosition = Math.max(0, elementTop - navbarHeight);
+
+        // Try smooth scroll first
+        try {
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        } catch (e) {
+          // Fallback for browsers that don't support smooth scroll
+          window.scrollTo(0, offsetPosition);
+        }
+      } else {
+        // If element not found, try scrolling to hash directly as fallback
+        const hash = href.replace('#', '');
+        const fallbackElement = document.getElementById(hash);
+        if (fallbackElement) {
+          const rect = fallbackElement.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const elementTop = rect.top + scrollTop;
+          const offsetPosition = Math.max(0, elementTop - 96);
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }
+    };
+
+    // If menu was open, wait for it to close, otherwise scroll immediately
+    if (wasMenuOpen) {
+      // Wait for menu animation to start closing
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          performScroll();
+        }, 150);
+      });
+    } else {
+      // Menu wasn't open, scroll immediately
+      requestAnimationFrame(() => {
+        performScroll();
+      });
+    }
   };
 
   return (
@@ -110,11 +174,17 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Controls */}
-          <div className="lg:hidden flex items-center gap-3">
+          <div className="lg:hidden flex items-center gap-3 z-50">
             <ThemeToggle />
             <motion.button
-              className="p-2.5 rounded-xl bg-muted/50 hover:bg-muted transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              type="button"
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+              className="p-2.5 rounded-xl bg-muted/50 hover:bg-muted transition-colors relative z-50 cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
               whileTap={{ scale: 0.9 }}
             >
               {isMobileMenuOpen ? (
@@ -128,42 +198,74 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background/98 backdrop-blur-xl border-t border-border/50"
-          >
-            <div className="container mx-auto px-4 py-6 flex flex-col gap-2">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+            />
+            {/* Menu Content */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden bg-background/98 backdrop-blur-xl border-t border-border/50 relative z-[60] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={(e) => e.stopPropagation()}
+            >
+              <div className="container mx-auto px-4 py-6 flex flex-col gap-2">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.name}
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      scrollToSection(item.href);
+                    }}
+                    onTouchEnd={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      scrollToSection(item.href);
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="text-left text-foreground font-medium py-3 px-4 rounded-xl hover:bg-muted/50 hover:text-primary transition-all uppercase tracking-wider text-sm cursor-pointer active:scale-95 touch-manipulation"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                  >
+                    {item.name}
+                  </motion.button>
+                ))}
+                <motion.button
+                  type="button"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(item.href);
+                    e.stopPropagation();
+                    scrollToSection("#register");
                   }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-foreground font-medium py-3 px-4 rounded-xl hover:bg-muted/50 hover:text-primary transition-all uppercase tracking-wider text-sm"
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    scrollToSection("#register");
+                  }}
+                  className="w-full py-3.5 mt-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all cursor-pointer active:scale-95 touch-manipulation"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
-                  {item.name}
-                </motion.a>
-              ))}
-              <motion.button
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                onClick={() => scrollToSection("#register")}
-                className="w-full py-3.5 mt-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold uppercase tracking-wider shadow-lg"
-              >
-                Join Now
-              </motion.button>
-            </div>
-          </motion.div>
+                  Join Now
+                </motion.button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>
