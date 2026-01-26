@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
 /**
- * Timeline end date: 26 January 2026, 10:00 AM IST (UTC +5:30)
- * IST is UTC+5:30, so 10:00 AM IST = 04:30 AM UTC
+ * Timeline end date: 26 January 2026, 9:30 AM IST (UTC +5:30)
+ * IST is UTC+5:30, so 9:30 AM IST = 04:00 AM UTC
  */
-const TIMELINE_END_DATE = new Date("2026-01-26T04:30:00.000Z"); // 26 Jan 2026, 10:00 AM IST in UTC
+const TIMELINE_END_DATE = new Date("2026-01-26T04:00:00.000Z"); // 26 Jan 2026, 9:30 AM IST in UTC
 
 /**
  * Hook to check if timeline has ended
- * Returns true if current time (IST) is at or after 26 Jan 2026, 10:00 AM IST
+ * Returns true if current time (IST) is at or after 26 Jan 2026, 9:30 AM IST
  * 
  * Uses client-side time but validates against a fixed UTC timestamp
  * to prevent simple manipulation. For production, consider using server time.

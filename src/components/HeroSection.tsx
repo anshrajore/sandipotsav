@@ -94,7 +94,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Explore the Festival
+          <span style={{ fontFamily: 'Clash, sans-serif' }}>Explore the Festival</span>
         </motion.button>
       </motion.div>
 

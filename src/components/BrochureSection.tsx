@@ -119,7 +119,7 @@ const BrochureSection = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Download size={20} />
-                Download PDF
+                <span style={{ fontFamily: 'Clash, sans-serif' }}>Download PDF</span>
               </motion.button>
               <motion.button
                 onClick={handleViewOnline}
@@ -128,7 +128,7 @@ const BrochureSection = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Eye size={20} />
-                View Online
+                <span style={{ fontFamily: 'Clash, sans-serif' }}>View Online</span>
               </motion.button>
               <motion.button
                 onClick={handleShare}
@@ -137,7 +137,7 @@ const BrochureSection = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Share2 size={20} />
-                Share
+                <span style={{ fontFamily: 'Clash, sans-serif' }}>Share</span>
               </motion.button>
             </div>
           </motion.div>

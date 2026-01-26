@@ -168,7 +168,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Join Now
+                <span style={{ fontFamily: 'Clash, sans-serif' }}>Join Now</span>
               </motion.button>
             </div>
           </div>
@@ -261,7 +261,7 @@ const Navbar = () => {
                   className="w-full py-3.5 mt-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all cursor-pointer active:scale-95 touch-manipulation"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
-                  Join Now
+                  <span style={{ fontFamily: 'Clash, sans-serif' }}>Join Now</span>
                 </motion.button>
               </div>
             </motion.div>

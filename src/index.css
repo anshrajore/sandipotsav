@@ -24,6 +24,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Clash';
+  src: url('/fonts/Clash_Regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -143,6 +151,14 @@
   p, .subtitle, .description {
     font-style: italic;
     font-family: 'CalfineDemo', 'Poppins', sans-serif;
+  }
+
+  *[class*="font-medium"],
+  .font-medium,
+  [style*="font-weight: 500"],
+  [style*="font-weight:500"] {
+    font-family: 'Clash', 'CalfineDemo', 'Poppins', sans-serif;
+    font-weight: 500;
   }
 }
 

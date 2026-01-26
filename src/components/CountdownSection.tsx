@@ -50,7 +50,7 @@ const CountdownSection = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <Calendar size={28} />
-            <span>26 January 2026, 10:00 AM IST</span>
+            <span style={{ fontFamily: 'Clash, sans-serif' }}>26 January 2026, 9:30 AM</span>
           </motion.div>
 
           {/* Countdown Timer */}
