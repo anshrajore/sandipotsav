@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Download, Eye, Share2 } from "lucide-react";
-import competitionPoster from "@/assets/competition-poster.jpg";
+import competitionPoster from "@/assets/competition-poster1.jpg";
 import sandipUniversityLogo from "@/assets/sandip-university-logo.png";
 
 const BrochureSection = () => {

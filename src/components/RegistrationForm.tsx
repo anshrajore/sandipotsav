@@ -85,16 +85,7 @@ const competitions = [
     contact: "9022865201",
     link: "https://forms.gle/UJE8U1zggZWumvV39",
   },
-  {
-    id: 9,
-    name: "Cultural Night Audition",
-    emoji: "🎤",
-    category: "Dance / Singing / Creative",
-    description: "Capture the perfect moments and showcase your photography skills.",
-    coordinator: "Ansh Rajore",
-    contact: "9096946604",
-    link: "https://forms.gle/cMcMomGeTFHJCDXP8",
-  },
+
 ];
 
 const RegistrationForm = () => {
