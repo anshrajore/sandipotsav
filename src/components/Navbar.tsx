@@ -12,7 +12,7 @@ const navItems = [
   { name: "About", href: "#about", type: "section" as const },
   { name: "Timeline", href: "#timeline", type: "section" as const },
   { name: "Register", href: "#register", type: "section" as const },
-  { name: "Vote Now", href: "/sun-shinning-star-2k26", type: "route" as const },
+  { name: "Vote Now", href: "/sun-shining-star-2k26", type: "route" as const },
 ];
 
 const Navbar = () => {
@@ -192,7 +192,7 @@ const Navbar = () => {
               <ThemeToggle />
               <motion.button
                 onClick={() => {
-                  navigate("/sun-shinning-star-2k26");
+                  navigate("/sun-shining-star-2k26");
                 }}
                 className="px-7 py-2.5 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold text-sm uppercase tracking-wider shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -289,12 +289,12 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    navigate("/sun-shinning-star-2k26");
+                    navigate("/sun-shining-star-2k26");
                   }}
                   onTouchEnd={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    navigate("/sun-shinning-star-2k26");
+                    navigate("/sun-shining-star-2k26");
                   }}
                   className="w-full py-3.5 mt-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all cursor-pointer active:scale-95 touch-manipulation"
                   style={{ WebkitTapHighlightColor: 'transparent' }}

@@ -5,7 +5,7 @@ import { Sparkles, ExternalLink, Calendar, Clock, MapPin, User, Phone } from "lu
 const competitions = [
   {
     id: 1,
-    name: "SUN Shinning Star 2k26",
+    name: "SUN Shining Star 2k26",
     emoji: "🤩",
     category: "RampWalk",
     description: "Test your quick thinking and problem-solving skills in this fast-paced challenge.",

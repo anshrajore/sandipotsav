@@ -18,7 +18,7 @@ const candidates = [
   { id: 10, name: "Vedika Rewale", image: "https://via.placeholder.com/400x400?text=Candidate+10" },
 ];
 
-const SunShinningStar = () => {
+const SunShiningStar = () => {
   const handleVoteClick = () => {
     window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
   };
@@ -35,31 +35,31 @@ const SunShinningStar = () => {
             className="text-xs md:text-sm uppercase tracking-[0.3em] text-primary/80 mb-3"
             style={{ fontFamily: "Clash, CalfineDemo, Poppins, sans-serif" }}
           >
-            Sandipotsav SUN Shinning Star 2k26
+            Sandipotsav SUN Shining Star 2k26
           </p>
           <h1
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 festival-text-gradient"
             style={{ fontFamily: "Gavency, Bebas Neue, sans-serif" }}
           >
-            Vote for Your <span className="text-primary">SUN Shinning Star</span>
+            Vote for Your <span className="text-primary">SUN Shining Star</span>
           </h1>
           <p
             className="text-sm md:text-base text-muted-foreground"
             style={{ fontFamily: "Clash, CalfineDemo, Poppins, sans-serif" }}
           >
-            Explore the shortlisted candidates for both Mr SUN Shinning Star and Ms SUN Shinning
+            Explore the shortlisted candidates for both Mr SUN Shining Star and Ms SUN Shining
             Star and cast your vote through the official Google Form. Click on any card below to
             open the voting form.
           </p>
         </div>
 
-        {/* Mr SUN Shinning Star Section */}
+        {/* Mr SUN Shining Star Section */}
         <div className="mb-12">
           <h2
             className="text-xl md:text-2xl font-semibold mb-4 text-center"
             style={{ fontFamily: "Clash, CalfineDemo, Poppins, sans-serif" }}
           >
-            Mr SUN Shinning Star (Top 5)
+            Mr SUN Shining Star (Top 5)
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
             {candidates.slice(0, 5).map((candidate) => (
@@ -102,13 +102,13 @@ const SunShinningStar = () => {
           </div>
         </div>
 
-        {/* Ms SUN Shinning Star Section */}
+        {/* Ms SUN Shining Star Section */}
         <div>
           <h2
             className="text-xl md:text-2xl font-semibold mb-4 text-center"
             style={{ fontFamily: "Clash, CalfineDemo, Poppins, sans-serif" }}
           >
-            Ms SUN Shinning Star (Top 5)
+            Ms SUN Shining Star (Top 5)
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
             {candidates.slice(5).map((candidate) => (
@@ -156,6 +156,6 @@ const SunShinningStar = () => {
   );
 };
 
-export default SunShinningStar;
+export default SunShiningStar;
 
 

@@ -92,7 +92,7 @@ const HeroSection = () => {
           transition={{ delay: 0.62, duration: 0.6 }}
           role="note"
           aria-label="Voting announcement"
-          onClick={() => (window.location.href = "/sun-shinning-star-2k26")}
+          onClick={() => (window.location.href = "/sun-shining-star-2k26")}
         >
           <div className="flex w-[200%] animate-marquee cursor-pointer select-none">
             <div className="flex w-1/2 items-center gap-6 px-6 py-3">
@@ -100,7 +100,7 @@ const HeroSection = () => {
                 Voting Live
               </span>
               <span className="text-sm md:text-base text-foreground/90">
-                SUN Shinning Star 2k26 — Click <span className="text-primary font-semibold">Vote Now</span> to cast your vote
+                SUN Shining Star 2k26 — Click <span className="text-primary font-semibold">Vote Now</span> to cast your vote
               </span>
               <span className="text-primary/80">•</span>
               <span className="text-sm md:text-base text-foreground/90">
@@ -113,7 +113,7 @@ const HeroSection = () => {
                 Voting Live
               </span>
               <span className="text-sm md:text-base text-foreground/90">
-                SUN Shinning Star 2k26 — Click <span className="text-primary font-semibold">Vote Now</span> to cast your vote
+                SUN Shining Star 2k26 — Click <span className="text-primary font-semibold">Vote Now</span> to cast your vote
               </span>
               <span className="text-primary/80">•</span>
               <span className="text-sm md:text-base text-foreground/90">
