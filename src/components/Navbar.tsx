@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import sandipUniversityLogoLight from "@/assets/sandip-university-logo.png";
 import sandipUniversityLogoDark from "@/assets/sandip-university-logo-dark.png";
@@ -15,6 +16,7 @@ const navItems = [
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -51,6 +53,9 @@ const Navbar = () => {
     const wasMenuOpen = isMobileMenuOpen;
     setIsMobileMenuOpen(false);
     document.body.style.overflow = "unset";
+    
+    // Check if we're on the home page
+    const isOnHomePage = window.location.pathname === "/";
     
     // Function to perform the scroll
     const performScroll = () => {
@@ -90,19 +95,38 @@ const Navbar = () => {
       }
     };
 
-    // If menu was open, wait for it to close, otherwise scroll immediately
-    if (wasMenuOpen) {
-      // Wait for menu animation to start closing
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          performScroll();
-        }, 150);
-      });
+    // If not on home page, navigate to home first, then scroll
+    if (!isOnHomePage) {
+      navigate("/");
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        if (wasMenuOpen) {
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              performScroll();
+            }, 150);
+          });
+        } else {
+          requestAnimationFrame(() => {
+            performScroll();
+          });
+        }
+      }, 100);
     } else {
-      // Menu wasn't open, scroll immediately
-      requestAnimationFrame(() => {
-        performScroll();
-      });
+      // If menu was open, wait for it to close, otherwise scroll immediately
+      if (wasMenuOpen) {
+        // Wait for menu animation to start closing
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            performScroll();
+          }, 150);
+        });
+      } else {
+        // Menu wasn't open, scroll immediately
+        requestAnimationFrame(() => {
+          performScroll();
+        });
+      }
     }
   };
 
@@ -152,7 +176,7 @@ const Navbar = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   if (item.type === "route") {
-                    window.location.href = item.href;
+                    navigate(item.href);
                   } else {
                     scrollToSection(item.href);
                   }
@@ -168,7 +192,7 @@ const Navbar = () => {
               <ThemeToggle />
               <motion.button
                 onClick={() => {
-                  window.location.href = "/sun-shinning-star-2k26";
+                  navigate("/sun-shinning-star-2k26");
                 }}
                 className="px-7 py-2.5 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold text-sm uppercase tracking-wider shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -234,7 +258,7 @@ const Navbar = () => {
                       e.preventDefault();
                       e.stopPropagation();
                       if (item.type === "route") {
-                        window.location.href = item.href;
+                        navigate(item.href);
                       } else {
                         scrollToSection(item.href);
                       }
@@ -243,7 +267,7 @@ const Navbar = () => {
                       e.preventDefault();
                       e.stopPropagation();
                       if (item.type === "route") {
-                        window.location.href = item.href;
+                        navigate(item.href);
                       } else {
                         scrollToSection(item.href);
                       }
@@ -265,12 +289,12 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    window.location.href = "/sun-shinning-star-2k26";
+                    navigate("/sun-shinning-star-2k26");
                   }}
                   onTouchEnd={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    window.location.href = "/sun-shinning-star-2k26";
+                    navigate("/sun-shinning-star-2k26");
                   }}
                   className="w-full py-3.5 mt-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all cursor-pointer active:scale-95 touch-manipulation"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
