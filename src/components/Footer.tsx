@@ -85,7 +85,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2026 Sandipotsav |Developed by Ansh Rajore / Aaryan Singh - Dark Arcane Team
+            © 2026 Sandipotsav |Developed by SUN SECT Club
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>

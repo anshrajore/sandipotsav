@@ -7,11 +7,11 @@ import sandipUniversityLogoLight from "@/assets/sandip-university-logo.png";
 import sandipUniversityLogoDark from "@/assets/sandip-university-logo-dark.png";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Timeline", href: "#timeline" },
-  { name: "Brochure", href: "#brochure" },
-  { name: "Register", href: "#register" },
+  { name: "Home", href: "#home", type: "section" as const },
+  { name: "About", href: "#about", type: "section" as const },
+  { name: "Timeline", href: "#timeline", type: "section" as const },
+  { name: "Register", href: "#register", type: "section" as const },
+  { name: "Vote Now", href: "/sun-shinning-star-2k26", type: "route" as const },
 ];
 
 const Navbar = () => {
@@ -151,7 +151,11 @@ const Navbar = () => {
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection(item.href);
+                  if (item.type === "route") {
+                    window.location.href = item.href;
+                  } else {
+                    scrollToSection(item.href);
+                  }
                 }}
                 className="relative font-medium text-sm uppercase tracking-wider text-foreground/80 hover:text-primary transition-all duration-300 group"
                 whileHover={{ y: -2 }}
@@ -163,12 +167,14 @@ const Navbar = () => {
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border/40">
               <ThemeToggle />
               <motion.button
-                onClick={() => scrollToSection("#register")}
+                onClick={() => {
+                  window.location.href = "/sun-shinning-star-2k26";
+                }}
                 className="px-7 py-2.5 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold text-sm uppercase tracking-wider shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span style={{ fontFamily: 'Clash, sans-serif' }}>Join Now</span>
+                <span style={{ fontFamily: 'Clash, sans-serif' }}>Vote Now</span>
               </motion.button>
             </div>
           </div>
@@ -227,12 +233,20 @@ const Navbar = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      scrollToSection(item.href);
+                      if (item.type === "route") {
+                        window.location.href = item.href;
+                      } else {
+                        scrollToSection(item.href);
+                      }
                     }}
                     onTouchEnd={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      scrollToSection(item.href);
+                      if (item.type === "route") {
+                        window.location.href = item.href;
+                      } else {
+                        scrollToSection(item.href);
+                      }
                     }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -251,17 +265,17 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    scrollToSection("#register");
+                    window.location.href = "/sun-shinning-star-2k26";
                   }}
                   onTouchEnd={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    scrollToSection("#register");
+                    window.location.href = "/sun-shinning-star-2k26";
                   }}
                   className="w-full py-3.5 mt-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all cursor-pointer active:scale-95 touch-manipulation"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
-                  <span style={{ fontFamily: 'Clash, sans-serif' }}>Join Now</span>
+                  <span style={{ fontFamily: 'Clash, sans-serif' }}>Vote Now</span>
                 </motion.button>
               </div>
             </motion.div>

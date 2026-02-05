@@ -84,13 +84,53 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
+        {/* Voting Marquee */}
+        <motion.div
+          className="w-full max-w-4xl mb-8 overflow-hidden rounded-full border border-border/60 bg-background/25 backdrop-blur-md shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.62, duration: 0.6 }}
+          role="note"
+          aria-label="Voting announcement"
+          onClick={() => (window.location.href = "/sun-shinning-star-2k26")}
+        >
+          <div className="flex w-[200%] animate-marquee cursor-pointer select-none">
+            <div className="flex w-1/2 items-center gap-6 px-6 py-3">
+              <span className="text-xs md:text-sm uppercase tracking-[0.3em] text-primary font-semibold">
+                Voting Live
+              </span>
+              <span className="text-sm md:text-base text-foreground/90">
+                SUN Shinning Star 2k26 — Click <span className="text-primary font-semibold">Vote Now</span> to cast your vote
+              </span>
+              <span className="text-primary/80">•</span>
+              <span className="text-sm md:text-base text-foreground/90">
+                Tap to open the official Google Form
+              </span>
+              <span className="text-primary/80">•</span>
+            </div>
+            <div className="flex w-1/2 items-center gap-6 px-6 py-3">
+              <span className="text-xs md:text-sm uppercase tracking-[0.3em] text-primary font-semibold">
+                Voting Live
+              </span>
+              <span className="text-sm md:text-base text-foreground/90">
+                SUN Shinning Star 2k26 — Click <span className="text-primary font-semibold">Vote Now</span> to cast your vote
+              </span>
+              <span className="text-primary/80">•</span>
+              <span className="text-sm md:text-base text-foreground/90">
+                Tap to open the official Google Form
+              </span>
+              <span className="text-primary/80">•</span>
+            </div>
+          </div>
+        </motion.div>
+
         {/* CTA Button */}
         <motion.button
           onClick={scrollToAbout}
           className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold text-lg festival-shadow hover:opacity-90 transition-all duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
+          transition={{ delay: 0.74, duration: 0.6 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
