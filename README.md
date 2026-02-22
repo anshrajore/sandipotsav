@@ -82,11 +82,3 @@ Built with engineering focus and real-world problem solving by Team Dark Arcane.
 
 ---
 
-If you want, I can now also give you:
-
-- 🔥 a **repo banner image prompt**  
-- 📊 GitHub **badges section**  
-- 🧠 recruiter-focused **portfolio version**  
-- 🏆 hackathon-style README  
-
-Just tell me which one next.
